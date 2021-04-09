@@ -26,21 +26,28 @@
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #194a50;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
+.form .button {
+  border-top: 1px solid #97f1f7;
+   background: #65d6a7;
+   background: -webkit-linear-gradient(top, #0195a5, #65d6a7);
+   background: -moz-linear-gradient(top, #0195a5, #65d6a7);
+   background: -ms-linear-gradient(top, #0195a5, #65d6a7);
+   background: -o-linear-gradient(top, #0195a5, #65d6a7);
+   padding: 10px 20px;
+   -webkit-border-radius: 11px;
+   -moz-border-radius: 11px;
+   border-radius: 11px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 14px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
 }
-.form button:hover,.form button:active,.form button:focus {
+.form .button:hover,.form .button:active,.form .button:focus {
   background: #43A047;
 }
 .form .message {

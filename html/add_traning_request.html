@@ -6,23 +6,34 @@
 
     <title>Training Request</title>
     <meta name="description" content="client push training request">
+
+    <link rel="stylesheet" href="../css/training-styles.css">
 </head>
 
 <body>
-    <h1>Traning Request Form</h1>
-    <div class="request-form-bg">
-        <div class="form">
-            <form class="traning-request-form">
+    <h1 class="page-heading">Traning Request Form</h1>
+    <div class="form">
+        <form class="training-request-form">
+            <div class="form-group">
                 <label for="fullName">Full Name :</label><br>
                 <input type="text" id="cName" placeholder="Jon Doe"><br>
+            </div>
+
+            <div class="form-group">
                 <label for="clientEmail">Email :</label><br>
                 <input type="email" id="cEmail" placeholder="jondoe@gmail.com"><br>
+            </div>
+
+            <div class="form-group">
                 <label for="cContactNum">Mobile Number</label><br>
                 <input type="text" id="cNumber" placeholder="Mobile No"><br>
-                <input type="submit" value="Submit">        
-            </form>
-        </div>
+            </div>
 
+            <div class="form-submit">
+                <input type="submit" value="Submit">
+            </div>
+                    
+        </form>
     </div>
 </body>
 </html>

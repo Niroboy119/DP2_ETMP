@@ -2,6 +2,49 @@ body{
 	background-color: aquamarine;
 }
 
+.container{
+	width: 100%;
+	margin-left: 0 auto;
+}
+
+header{
+	background: rgba(45,45,45,.98);
+}
+
+header::after{
+	content: '';
+	display: table;
+	clear: both;
+}
+
+nav{
+	float: right;
+}
+
+nav ul{
+	margin: 0;
+	list-style: none;
+}
+
+nav li{
+	display: inline-block;
+	margin-left: 40px;
+	margin-right: 20px;
+	padding-top: 25px;
+}
+
+nav a{
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	font-size: 14px;
+}
+
+nav a:hover{
+	color: #950740
+}
+
 .page-heading{
     text-align:center;
 }

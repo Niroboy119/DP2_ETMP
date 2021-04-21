@@ -1,3 +1,7 @@
+body{
+	background-color: aquamarine;
+}
+
 .page-heading{
     text-align:center;
 }
@@ -7,6 +11,10 @@
     margin: auto;
     border: 1px solid #000000;
 	padding: 50px 0;
+}
+
+.form{
+	background-color: cadetblue;
 }
 
 .form-group{

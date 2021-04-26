@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>ETMP - Training Request Form</title>
+
+        <!-- Bootstrap v4.4.1 -->
+        <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
+
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
+
+    </head>
+
+    <body class="bg-light">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <h1 class="text-center">Training Request Form</h1>
+                    <hr>
+                    <form id="register_form">
+                        <p class="lead">Fill in the form to see if the required training is provided.</p>
+                        <div id="alert_error_message" class="alert alert-danger collapse" role="alert">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            Please check in on some of the fields below.
+                        </div>
+                        <div id="alert_sucess_message" class="alert alert-success collapse" role="alert">
+                            <p>Request created and successfully forwarded.</p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fullname">Full Name *</label>
+                            <input type="text" class="form-control" id="fullname" name="fullname" maxlength="50"
+                                placeholder="Enter full name">
+                            <div id="fullname_error_message" class="text-danger"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Email *</label>
+                            <input type="email" class="form-control" id="email" name="email" maxlength="100"
+                                placeholder="Enter email">
+                            <div id="email_error_message" class="text-danger"></div>
+                        </div>
+                         <!-- include calendar for when the training/workshop should be held -->
+                         <div class="mb-3">
+                            <label for="training-date">Date for training *</label>
+                            <input type="date" class="form-control" id="dateTraining" name="dateTraining"
+                                placeholder="Pick a date">
+                            <!-- <div id="password_error_message" class="text-danger"></div> -->
+                        </div>
+                        <!-- Include a training type selection -->
+                        <div class="mb-3">
+                            <label>Training type *</label>
+                            <select name="training-type" id="training-type" class="custom-select">
+                                <option value="" hidden>Training type</option>
+                                <option>Leadership & Communication skills training</option>
+                                <option>Work productivity training</option>
+                                <option>Language Proficiency training</option>
+                                <option>Negotiation & Presentation skills training</option>
+                                <option>Personal Development training</option>
+                            </select>
+                            <div id="gender_error_message" class="text-danger"></div>
+                        </div>
+                        <!-- include text box for client to describe training needed -->
+                        <!-- if the needed, training is not included in the training drop down list -->
+                        <div class="mb-3">
+                            <label for="other-trainings">Other training description</label>
+                            <textarea class="form-control" id="othTrainings" name="othTrainings" rows="5" cols="20">Describe your desired training...
+                            </textarea>
+                            <!-- <div id="password_error_message" class="text-danger"></div> -->
+                        </div>
+                        <div class="mb-3">
+                            <label for="numOfParticipants">Number of Attendees *</label>
+                            <input type="number" class="form-control" id="numOfParticipants" name="numOfParticipants" min="1" max="50">
+                            <!-- <div id="fullname_error_message" class="text-danger"></div> -->
+                        </div>
+                        <hr class="mb-4">
+                        <input type="hidden" name="action" id="action" value="register_user">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Register training request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- JQuery-3.4.1 -->
+        <script src="bootstrap/bootstrap.min.js"></script>
+
+
+
+</html>

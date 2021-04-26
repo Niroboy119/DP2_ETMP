@@ -21,10 +21,10 @@ include "connection.php"
                 '$oth_training_type',
                 '$numOfAttendees')";
 
-    if (!mysql_query($sql)) {
+    if (!$conn->query($sql)) {
         die("error".mysqli_connect_error());
     }else {
         echo"client requested insert into database";
     }
-
+$conn->close();
 ?> 

@@ -113,3 +113,36 @@ color:DarkTurquoise;
 </html>
 
 
+<?php
+include "../connection.php";
+
+if (isset($_POST["submit"])) {
+	$str = $_POST["search"];
+	$str= str_replace(' ', '', $str);
+	$sth= "SELECT * FROM tbl_all_trainings WHERE Trainings LIKE '$str%'";
+	$sth_query=mysqli_query($conn,$sth);
+	if(mysqli_num_rows($sth_query)!=0 && $str!="") {
+	$sth_assoc=mysqli_fetch_assoc($sth_query);
+	?>
+	<h3 class="center2">Search Results</h3>
+	<div class="details">
+	<?php
+	do { ?>
+	
+	 <p>Type of Training: <?php echo $sth_assoc['Trainings']; ?></p>
+	 <p> Price: <?php echo $sth_assoc['Price']; ?></p>
+    <?php } while($sth_assoc=mysqli_fetch_assoc($sth_query));
+    	?> 
+	</div>  
+    <?php
+	} else {
+	   ?><p class="details">No results found!</p>
+	   <?php 
+	}
+
+	
+}
+
+?>
+
+

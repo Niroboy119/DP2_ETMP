@@ -93,7 +93,7 @@
                                 </div>
                                 <hr class="mb-4">
                                 <input type="hidden" name="action" id="action" value="update_user">
-                                <button class="btn btn-primary btn-block" type="submit">Update Password</button>
+                                <button class="btn btn-primary btn-block" type="submit">Update Profile</button>
                             </form>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                                     <div id="confirm_password_error_message" class="text-danger"></div>
                                 </div>
                                 <hr class="mb-4">
-                                <button class="btn btn-primary btn-block" type="submit">Update Profile</button>
+                                <button class="btn btn-primary btn-block" type="submit">Update Password</button>
                             </form>
                         </div>
                     </div>

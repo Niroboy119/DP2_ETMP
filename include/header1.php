@@ -1,13 +1,8 @@
 <?php
 
-  //header.php
   
   session_start();
 
- // if(!isset($_SESSION["username"]))
- // {
- //   header('location: login.html');
-//  }
 
 ?>
 
@@ -53,10 +48,10 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                  <a class="nav-link" href="index2.php"><span class="fas fa-home"></span> Home</a>
+                  <a class="nav-link" href="index.php"><span class="fas fa-home"></span> Home</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="profile.php"><span class="fas fa-user"></span> Profile</a>
+                  <a class="nav-link" href="login.html"><span class="fas fa-user"></span> Profile</a>
               </li>
                <li class="nav-item">
                   <a class="nav-link" href="requestform.html"><span class="fas fa-book"></span> Booking</a>
@@ -68,7 +63,7 @@
                   <a class="nav-link" href="form.html"><span class="fas fa-address-book"></span> Contact Us</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="logout.php"><span class="fas fa-sign-out-alt"></span> Logout</a>
+                  <a class="nav-link" href="login.html"><span class="fas fa-sign-out-alt"></span> Login</a>
               </li>
             </ul>
           </div>

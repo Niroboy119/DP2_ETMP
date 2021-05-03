@@ -4,10 +4,10 @@
 error_reporting(E_ALL ^ E_NOTICE);
 
 // Connect to Database
-require_once "inc/config.php";
+require_once "connection.php";
 
 // Days,Hours,Minutes Time Format
-require_once "inc/time.php";
+require_once "time.php";
 
 ?>
 
@@ -15,8 +15,14 @@ require_once "inc/time.php";
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Inbox System</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>EMTP - Inbox</title>
+
+    <!-- Bootstrap v4.4.1 
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.min.css">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
+<link rel="stylesheet" type="text/css" href="css/style2.css">
 <script type="text/javascript" src="js/jquery.js"></script>
 </head>
 
@@ -24,7 +30,7 @@ require_once "inc/time.php";
 
 <script type="text/javascript">
 
-$("body").prepend('<div id="loading"><img src="img/loading.gif" alt="Loading.." title="Loading.." /></div>');
+$("body").prepend('<div id="loading"><img src="images/loading.gif" alt="Loading.." title="Loading.." /></div>');
 
 $(window).load(function(){
 	$("#inbox, #msg").fadeIn("slow");
@@ -150,9 +156,9 @@ exit();
 					$date = $row['date'];
 					$time = time_passed($row['time']);
 					if($row['open'] == '1'){
-						$open = '<img src="img/open.png" alt="Opened" title="Opened" />';
+						$open = '<img src="images/open.png" alt="Opened" title="Opened" />';
 					}else {
-						$open = '<img src="img/not_open.png" alt="Opened" title="Opened" />';
+						$open = '<img src="images/not_open.png" alt="Opened" title="Opened" />';
 					}
 
 					echo '<tr class="border_bottom">';

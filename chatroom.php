@@ -11,6 +11,25 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
+ <div class="container">
+   <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+     <div class="navbar-header">
+      <a class="navbar-brand" href="#">Webslesson Tutorial</a>
+     </div>
+     <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-envelope" style="font-size:18px;"></span></a>
+       <ul class="dropdown-menu"></ul>
+      </li>
+     </ul>
+    </div>
+   </nav>
+   <br />
+   <h2 align="center">Facebook Style Header Notification using PHP Ajax Bootstrap</h2>
+   <br />
+   <form method="post" id="comment_form">
+    <div class="form-group">
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style_chat.css" />

@@ -7,6 +7,9 @@
                 <a class="nav-link active font-weight-bold" id="profile-tab" data-toggle="tab" name="profile" href="#profile" role="tab" aria-controls="home" aria-selected="true">Profile</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link font-weight-bold" id="profile-tab" data-toggle="tab" name="profile" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Requests</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link font-weight-bold" id="profile-tab" data-toggle="tab" href="#edit-profile" role="tab" aria-controls="profile" aria-selected="false">Edit Profile</a>
             </li>
             <li class="nav-item">
@@ -16,6 +19,43 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <strong>Full Name: </strong>
+                            </div>
+                            <div class="col-md-10"> <?php echo $_SESSION['fullname']; ?>
+                            </div>
+                            <div class="col-md-2">
+                                <strong>Username: </strong>
+                            </div>
+                            <div class="col-md-10">
+                                <?php echo $_SESSION['username']; ?>
+                            </div>
+                            <div class="col-md-2">
+                                <strong>E-mail: </strong>
+                            </div>
+                            <div class="col-md-10">
+                                <?php echo $_SESSION['email']; ?>
+                            </div>
+                            <div class="col-md-2">
+                                <strong>Gender: </strong>
+                            </div>
+                            <div class="col-md-10">
+                                <?php echo $_SESSION['gender']; ?>
+                            </div>
+                            <div class="col-md-2">
+                                <strong>Created: </strong>
+                            </div>
+                            <div class="col-md-10">
+                                <?php echo $_SESSION['created_date']; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane active" id="edit_requests" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">

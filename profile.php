@@ -80,6 +80,82 @@
                         </tfoot>
                       </table>
                     </div>
+                  </div>
+                </div>
+
+                <!-- Edit training request form -->
+                <div class="modal fade" id="formModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="modal_title"></h4>
+                        <button class="close" data-dismiss="modal">
+                          <span>&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form id="training_request_form">
+            					<p class="lead">Fill in the form to see if the required training is provided.</p>
+                					<div id="alert_error_message" class="alert alert-danger collapse" role="alert">
+                                        <i class="fa fa-exclamation-triangle"></i>
+                                        Please check in on some of the fields below.
+                                    </div>
+                					<div class="mb-3">
+                                        <label for="fullname">Full Name *</label>
+                                        <input type="text" class="form-control" id="fname" name="fname" maxlength="50"
+                                            placeholder="Enter full name" >
+                                        <div id="fullname_error_message" class="text-danger"></div>
+                					 </div>
+                                    <div class="mb-3">
+                                        <label for="email">Email *</label>
+                                        <input type="email" class="form-control" id="email" name="email" maxlength="100"
+                                            placeholder="Enter email" >
+                                        <div id="email_error_message" class="text-danger"></div>
+                                    </div>
+                                     <!-- include calendar for when the training/workshop should be held -->
+                                     <div class="mb-3">
+                                        <label for="training-date">Date for training *</label>
+                                        <input type="date" class="form-control" id="dateTraining" name="dateTraining"
+                                            placeholder="Pick a date" >
+                                        <div id="date_error_message" class="text-danger"></div>
+                                    </div>
+                                    <!-- Include a training type selection -->
+                                    <div class="mb-3">
+                                        <label>Training type *</label>
+                                        <select name="training-type" id="training-type" class="custom-select" onchange="change(this)" >
+                                            <option hidden>Select training type</option>
+                                            <option>Leadership/Communication skills training</option>
+                                            <option>Work productivity training</option>
+                                            <option>Language Proficiency training</option>
+                                            <option>Negotiation/Presentation skills training</option>
+                                            <option>Personal Development training</option>
+                                            <option>Others...</option>
+                                        </select>
+                                        <div id="trainingType_error_message" class="text-danger"></div>
+                                    </div>
+                                    <!-- include text box for client to describe training needed -->
+                                    <!-- if the needed, training is not included in the training drop down list -->
+                                    <div id="othT-mb3" class="mb-3">
+                                        <label for="other-trainings">Other training description</label>
+                                        <textarea class="form-control" id="othTrainings" name="othTrainings"  rows="5" cols="20">Describe your desired training...</textarea>
+                                        <div id="otherTraining_error_message" class="text-danger"></div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="numOfParticipants">Number of Attendees *</label>
+                                        <input type="number" class="form-control" id="numOfParticipants" name="numOfParticipants" min="1" max="50" >
+                                        <div id="numOfAttendees_error_message" class="text-danger"></div>
+                                    </div>
+                                    <hr class="mb-4">
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="user_id" id="user_id"/>
+                                        <input type="hidden" name="action" id="action" value="Add"/>
+                                        <input type="submit" name="button_action" id="button_action" class="btn btn-primary" value="Add"/>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                            </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
             <div class="tab-pane" id="edit-profile" role="tabpanel" aria-labelledby="profile-tab">

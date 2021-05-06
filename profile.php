@@ -76,6 +76,29 @@
                             <th>Num of Attendees</th>
                           </tr>
                         </thead>
+
+                        <tbody>
+                        <tr>
+                        <?php 
+                            include("connection.php");
+                            
+                            $result = mysql_query("SELECT id, fullname, email, date_for_training, training_type, num_of_attendees FROM tbl_client_requests WHERE fullname = 'Saad' ");
+                            
+                            while($test = mysql_fetch_array($result)){
+                                $id = $test['id'];
+                                echo"<td>".$test['id']."</td>";
+                                echo"<td>".$test['fullname']."</td>";
+                                echo"<td>".$test['email']."</td>";
+                                echo"<td>".$test['date_for_training']."</td>";
+                                echo"<td>".$test['training_type']."</td>";
+                                echo"<td>".$test['num_of_attendees']."</td>";
+                                echo "</tr>";
+                            }
+                            
+                            mysql_close($conn);
+                        ?>
+                        </body>
+                        
                         <tfoot>
                         </tfoot>
                       </table>

@@ -247,6 +247,22 @@
 <?php include('include/footer.php'); ?>
 
 <script>
+            function change(obj) {
+
+            var selectBox = obj;
+            var selected = selectBox.value;
+            var othTrainingsDiv = document.getElementById("othT-mb3"); 
+
+            if(selected === 'Others...'){
+                othTrainingsDiv.style.display = "";
+            }
+            else{
+                othTrainingsDiv.style.display = "none";
+            }
+            }
+        </script>
+
+<script>
 
   $(document).ready(function(){
 

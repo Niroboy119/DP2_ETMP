@@ -55,40 +55,30 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane active" id="edit_requests" role="tabpanel" aria-labelledby="profile-tab">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <strong>Full Name: </strong>
-                            </div>
-                            <div class="col-md-10"> <?php echo $_SESSION['fullname']; ?>
-                            </div>
-                            <div class="col-md-2">
-                                <strong>Username: </strong>
-                            </div>
-                            <div class="col-md-10">
-                                <?php echo $_SESSION['username']; ?>
-                            </div>
-                            <div class="col-md-2">
-                                <strong>E-mail: </strong>
-                            </div>
-                            <div class="col-md-10">
-                                <?php echo $_SESSION['email']; ?>
-                            </div>
-                            <div class="col-md-2">
-                                <strong>Gender: </strong>
-                            </div>
-                            <div class="col-md-10">
-                                <?php echo $_SESSION['gender']; ?>
-                            </div>
-                            <div class="col-md-2">
-                                <strong>Created: </strong>
-                            </div>
-                            <div class="col-md-10">
-                                <?php echo $_SESSION['created_date']; ?>
-                            </div>
-                        </div>
+            <div class="tab-pane" id="requests" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="card mb-3" style="margin-top:30px">
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-md-9 font-weight-bold"><i class="fas fa-users"></i> Request List</div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <span id="sucess_message"></span>
+                      <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th>Request ID</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Date of Training</th>
+                            <th>Training Type</th>
+                            <th>Num of Attendees</th>
+                          </tr>
+                        </thead>
+                        <tfoot>
+                        </tfoot>
+                      </table>
                     </div>
                 </div>
             </div>

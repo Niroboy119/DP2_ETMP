@@ -30,6 +30,27 @@ $output='';
         $oth_training_type = "empty";
     }
 
+
+ $sql = "INSERT INTO tbl_client_requests (fullname, email, date_for_training, training_type, other_training_type, num_of_attendees, paymentType, billingName, billingEmail, address, city, state, zip, cardName, cardNum, expMonth, expYear, cvv) 
+            VALUES('$fullname', 
+                '$email',
+                '$tRequestDate',
+                '$trainingType',
+                '$oth_training_type',
+                '$numOfAttendees',
+                '$payType',
+                '$billingName',
+                '$billingEmail',
+                '$address',
+                '$city',
+                '$state',
+                '$zip',
+                '$cardName',
+                '$cardNum',
+                '$expMonth',
+                '$expYear',
+                '$cvv')";
+
     
 $conn->close();
 

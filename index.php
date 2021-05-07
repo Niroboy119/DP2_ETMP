@@ -16,7 +16,7 @@
               through practical information sharing to help solve day to day
               business challenges by developing human capitals that meets the
               company’s needs.</h4>
-          </div>
+        
           
      <br>
      <br>
@@ -24,7 +24,24 @@
 
               alt="traning" title="traning session" style="width: 840px; height: 560px;"></div>
         </div>
-    </div>
+    
+      <hr>
+     <div>
+      <h1 style="text-align:center" class="display-4">About Us </h1>
+      </div>
+      <hr>
+        <div>
+      <h1 style="text-align:center" class="display-4">News </h1>
+      </div>
+      <hr>
+      <div>
+      <h1 style="text-align:center" class="display-4">Events </h1>
+      </div>
   </div>
-
+  </div>
+<br>
+     <br>
+     <br>
+     <br>
+     </div>
 <?php include('include/footer.php'); ?>

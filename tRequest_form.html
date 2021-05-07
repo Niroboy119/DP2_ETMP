@@ -596,7 +596,7 @@
                     $.ajax({
                         type: "POST",
                         data: { 'fname': $("#fname").val(), 'email': $("#email").val(), 'dateTraining': $("#dateTraining").val(), 'training-type': $("#training-type").val(), 'othTrainings': $("#othTrainings").val()  ,'numOfParticipants': $("#numOfParticipants").val() },
-                        url: "tRequest_action1.php",
+                        url: "tRequest_action.php",
                         dataType: "json",
                         success: function (data) {
                             if (data.status == 'success') {
@@ -631,8 +631,8 @@
 				if(error_cvv==false && error_expY==false && error_expM==false && error_cardName==false && error_cardNum==false && error_zip==false && error_state==false && error_city==false && error_address==false && error_name == false && error_email1 == false) {
                    $.ajax({
                         type: "POST",
-                         data: { 'fname': $("#fname").val(), 'email': $("#email").val(), 'dateTraining': $("#dateTraining").val(), 'training-type': $("#training-type").val(), 'othTrainings': $("#othTrainings").val()  ,'numOfParticipants': $("#numOfParticipants").val()},
-                        url: "tRequest_action.php",
+                         data: { 'fname': $("#fname").val(), 'email': $("#email").val(), 'dateTraining': $("#dateTraining").val(), 'training-type': $("#training-type").val(), 'othTrainings': $("#othTrainings").val()  ,'numOfParticipants': $("#numOfParticipants").val(), 'bName': $("#name").val(), 'bEmail': $("#email1").val(), 'address': $("#adr").val(), 'city': $("#city").val(), 'state': $("#state").val(), 'zip': $("#zip").val(), 'cardName': $("#cname").val(), 'cardNum': $("#ccnum").val(), 'expMonth': $("#expmonth").val(), 'expYear': $("#expyear").val(), 'cvv': $("#cvv").val() },
+                        url: "tRequest_action1.php",
                         dataType: "json",
                         success: function (data) {
                             if (data.status == 'success') {

@@ -55,132 +55,104 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane" id="requests" role="tabpanel" aria-labelledby="profile-tab">
+             <!--Edit training request-->
+             <div class="tab-pane" id="requests" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="card mb-3" style="margin-top:30px">
                   <div class="card-header">
                     <div class="row">
-                      <div class="col-md-9 font-weight-bold"><i class="fas fa-users"></i> Request List</div>
+                      <div class="col-md-9 font-weight-bold"><i class="fas fa-users"></i> Edit Training Request</div>
                     </div>
                   </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <span id="sucess_message"></span>
-                      <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
-                        <thead>
-                          <tr>
-                            <th>Request ID</th>
-                            <th>Full Name</th>
-                            <th>Email</th>
-                            <th>Date of Training</th>
-                            <th>Training Type</th>
-                            <th>Num of Attendees</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr>
-                        <?php 
-                            include("connection.php");
-                            
-                            $result = mysql_query("SELECT id, fullname, email, date_for_training, training_type, num_of_attendees FROM tbl_client_requests WHERE fullname = 'Saad' ");
-                            
-                            while($test = mysql_fetch_array($result)){
-                                $id = $test['id'];
-                                echo"<td>".$test['id']."</td>";
-                                echo"<td>".$test['fullname']."</td>";
-                                echo"<td>".$test['email']."</td>";
-                                echo"<td>".$test['date_for_training']."</td>";
-                                echo"<td>".$test['training_type']."</td>";
-                                echo"<td>".$test['num_of_attendees']."</td>";
-                                echo "</tr>";
-                            }
-                            
-                            mysql_close($conn);
-                        ?>
-                        </body>
-                        
-                        <tfoot>
-                        </tfoot>
-                      </table>
+                  <div class="card-body">    
+                    <div class="col-md-6">
+                    <br>
+                    <form id="training_request_form">
+    					<p class="lead">Edit the appropriate fields.</p>
+        					<div id="alert_error_message" class="alert alert-danger collapse" role="alert">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                Please check in on some of the fields below.
+                            </div>
+                            <div id="alert_sucess_message" class="alert alert-success collapse" role="alert">
+                                Request created and successfully forwarded.
+                            </div>
+        					<div class="mb-3">
+                                <label for="fullname">Full Name *</label>
+                                <input type="text" class="form-control" id="fname" name="fname" maxlength="50"
+                                    placeholder="Enter full name" >
+                                <div id="fullname_error_message" class="text-danger"></div>
+        					 </div>
+                            <div class="mb-3">
+                                <label for="email">Email *</label>
+                                <input type="email" class="form-control" id="email" name="email" maxlength="100"
+                                    placeholder="Enter email" >
+                                <div id="email_error_message" class="text-danger"></div>
+                            </div>
+                             <!-- include calendar for when the training/workshop should be held -->
+                             <div class="mb-3">
+                                <label for="training-date">Date for training *</label>
+                                <input type="date" class="form-control" id="dateTraining" name="dateTraining"
+                                    placeholder="Pick a date" >
+                                <div id="date_error_message" class="text-danger"></div>
+                            </div>
+                            <!-- Include a training type selection -->
+                            <div class="mb-3">
+                                <label>Training type *</label>
+                                <select name="training-type" id="training-type" class="custom-select" onchange="change(this)" >
+                                    <option hidden>Select training type</option>
+                                    <option>Leadership/Communication skills training</option>
+                                    <option>Work productivity training</option>
+                                    <option>Language Proficiency training</option>
+                                    <option>Negotiation/Presentation skills training</option>
+                                    <option>Personal Development training</option>
+                                    <option>Others...</option>
+                                </select>
+                                <div id="trainingType_error_message" class="text-danger"></div>
+                            </div>
+                            <!-- include text box for client to describe training needed -->
+                            <!-- if the needed, training is not included in the training drop down list -->
+                            <div id="othT-mb3" class="mb-3">
+                                <label for="other-trainings">Other training description</label>
+                                <textarea class="form-control" id="othTrainings" name="othTrainings"  rows="5" cols="20">Describe your desired training...</textarea>
+                                <div id="otherTraining_error_message" class="text-danger"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="numOfParticipants">Number of Attendees *</label>
+                                <input type="number" class="form-control" id="numOfParticipants" name="numOfParticipants" min="1" max="50" >
+                                <div id="numOfAttendees_error_message" class="text-danger"></div>
+                            </div>
+                            <div>
+                            <hr class="mb-4">    
+                            <input type="hidden" name="action" id="update_request" value="register_trainingRequest">
+                            <button class="btn btn-primary btn-lg btn-block" id="update_request" type="submit">Update training request</button>
+                            </div>
+                    </form>    
                     </div>
-                  </div>
-                </div>
-
-                <!-- Edit training request form -->
-                <div class="modal fade" id="formModal">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title" id="modal_title"></h4>
-                        <button class="close" data-dismiss="modal">
-                          <span>&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form id="training_request_form">
-            					<p class="lead">Fill in the form to see if the required training is provided.</p>
-                					<div id="alert_error_message" class="alert alert-danger collapse" role="alert">
-                                        <i class="fa fa-exclamation-triangle"></i>
-                                        Please check in on some of the fields below.
-                                    </div>
-                					<div class="mb-3">
-                                        <label for="fullname">Full Name *</label>
-                                        <input type="text" class="form-control" id="fname" name="fname" maxlength="50"
-                                            placeholder="Enter full name" >
-                                        <div id="fullname_error_message" class="text-danger"></div>
-                					 </div>
-                                    <div class="mb-3">
-                                        <label for="email">Email *</label>
-                                        <input type="email" class="form-control" id="email" name="email" maxlength="100"
-                                            placeholder="Enter email" >
-                                        <div id="email_error_message" class="text-danger"></div>
-                                    </div>
-                                     <!-- include calendar for when the training/workshop should be held -->
-                                     <div class="mb-3">
-                                        <label for="training-date">Date for training *</label>
-                                        <input type="date" class="form-control" id="dateTraining" name="dateTraining"
-                                            placeholder="Pick a date" >
-                                        <div id="date_error_message" class="text-danger"></div>
-                                    </div>
-                                    <!-- Include a training type selection -->
-                                    <div class="mb-3">
-                                        <label>Training type *</label>
-                                        <select name="training-type" id="training-type" class="custom-select" onchange="change(this)" >
-                                            <option hidden>Select training type</option>
-                                            <option>Leadership/Communication skills training</option>
-                                            <option>Work productivity training</option>
-                                            <option>Language Proficiency training</option>
-                                            <option>Negotiation/Presentation skills training</option>
-                                            <option>Personal Development training</option>
-                                            <option>Others...</option>
-                                        </select>
-                                        <div id="trainingType_error_message" class="text-danger"></div>
-                                    </div>
-                                    <!-- include text box for client to describe training needed -->
-                                    <!-- if the needed, training is not included in the training drop down list -->
-                                    <div id="othT-mb3" class="mb-3">
-                                        <label for="other-trainings">Other training description</label>
-                                        <textarea class="form-control" id="othTrainings" name="othTrainings"  rows="5" cols="20">Describe your desired training...</textarea>
-                                        <div id="otherTraining_error_message" class="text-danger"></div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="numOfParticipants">Number of Attendees *</label>
-                                        <input type="number" class="form-control" id="numOfParticipants" name="numOfParticipants" min="1" max="50" >
-                                        <div id="numOfAttendees_error_message" class="text-danger"></div>
-                                    </div>
-                                    <hr class="mb-4">
-                                    <div class="modal-footer">
-                                        <input type="hidden" name="user_id" id="user_id"/>
-                                        <input type="hidden" name="action" id="action" value="Add"/>
-                                        <input type="submit" name="button_action" id="button_action" class="btn btn-primary" value="Add"/>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                            </form>
-                      </div>
                     </div>
-                  </div>
+                  <!--<div class="card-body">-->
+                  <!--  <div class="table-responsive">-->
+                  <!--    <span id="sucess_message"></span>-->
+                      <!--<table class="table table-bordered" id="userTable" width="100%" cellspacing="0">-->
+                      <!--  <thead>-->
+                      <!--    <tr>-->
+                      <!--      <th>Request ID</th>-->
+                      <!--      <th>Full Name</th>-->
+                      <!--      <th>Email</th>-->
+                      <!--      <th>Date of Training</th>-->
+                      <!--      <th>Training Type</th>-->
+                      <!--      <th>Num of Attendees</th>-->
+                      <!--    </tr>-->
+                      <!--  </thead>-->
+                      <!--  <tfoot>-->
+                      <!--  </tfoot>-->
+                      <!--</table>-->
+                      
+                      <!-- Edit training request form -->
+            <!--<div class="tab-pane" id="edit-profile" role="tabpanel" aria-labelledby="profile-tab">-->
+            <!--    <div class="card">-->
+                    
                 </div>
             </div>
+
             <div class="tab-pane" id="edit-profile" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="card">
                     <div class="card-body">    
@@ -270,20 +242,191 @@
 <?php include('include/footer.php'); ?>
 
 <script>
-            function change(obj) {
+    function change(obj) {
 
-            var selectBox = obj;
-            var selected = selectBox.value;
-            var othTrainingsDiv = document.getElementById("othT-mb3"); 
+    var selectBox = obj;
+    var selected = selectBox.value;
+    var othTrainingsDiv = document.getElementById("othT-mb3"); 
 
-            if(selected === 'Others...'){
-                othTrainingsDiv.style.display = "";
+    if(selected === 'Others...'){
+        othTrainingsDiv.style.display = "";
+    }
+    else{
+        othTrainingsDiv.style.display = "none";
+    }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        $(document).keypress(function (e) {
+            if (e.which == 13) {
+                event.preventDefault();
+                valForm();
             }
-            else{
-                othTrainingsDiv.style.display = "none";
+        });
+
+        $('#training_request_form').on('submit', function (event) {
+            event.preventDefault();
+            valForm();
+        });
+
+		var error_fullname = false;
+        var error_email = false;
+		var error_date = false;
+		var error_training = false;
+		var error_attendees = false;
+
+
+        $("#fname").focusout(function () {
+            check_fullname();
+        });
+
+        $("#email").focusout(function () {
+            check_email();
+        });
+		
+		$("#dateTraining").focusout(function () {
+            check_date();
+        });
+		
+		$("#training-type").focusout(function () {
+            check_training();
+        });
+		
+		$("#numOfParticipants").focusout(function () {
+            check_numOfAttendees();
+        });
+		
+
+        function check_fullname() {
+            if ($.trim($('#fname').val()) == '') {
+                $("#fullname_error_message").html("Fullname is a required field.");
+                $("#fullname_error_message").show();
+                $("#fname").addClass("is-invalid");
+                error_fullname = true;
+            } else {
+                $("#fullname_error_message").hide();
+                $("#fname").removeClass("is-invalid");
             }
+        }
+
+        function check_email() {
+            var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+            var email_length = $("#email").val().length;
+
+            if ($.trim($('#email').val()) == '') {
+                $("#email_error_message").html("Email is a required field.");
+                $("#email_error_message").show();
+                $("#email").addClass("is-invalid");
+            } else if (!(pattern.test($("#email").val()))) {
+                $("#email_error_message").html("Invalid email address");
+                $("#email_error_message").show();
+                error_email = true;
+                $("#email").addClass("is-invalid");
+            } else {
+                $("#email_error_message").hide();
+                $("#email").removeClass("is-invalid");
             }
-        </script>
+        }
+		
+		function check_date() {
+
+            if ($.trim($('#dateTraining').val()) == '') {
+                $("#date_error_message").html("Date of training is a required field.");
+                $("#date_error_message").show();
+                $("#dateTraining").addClass("is-invalid");
+                error_date = true;
+            } else {
+                $("#date_error_message").hide();
+                $("#dateTraining").removeClass("is-invalid");
+            }
+        }
+		
+		function check_training() {
+            if ($.trim($('#training-type').val()) == 'Select training type') {
+                $("#trainingType_error_message").html("Type of Training is a required field.");
+                $("#trainingType_error_message").show();
+                $("#training-type").addClass("is-invalid");
+                error_training = true;
+            } else {
+                $("#trainingType_error_message").hide();
+                $("#training-type").removeClass("is-invalid");
+            }
+        }
+		
+		function check_numOfAttendees() {
+            if ($.trim($('#numOfParticipants').val()) == '') {
+                $("#numOfAttendees_error_message").html("Number of Attendees is a required field.");
+                $("#numOfAttendees_error_message").show();
+                $("#numOfParticipants").addClass("is-invalid");
+                error_attendees = true;
+            }
+
+			else if ($.trim($('#numOfParticipants').val()) <= '0') {
+                $("#numOfAttendees_error_message").html("The Number of Attendees should be more than zero.");
+                $("#numOfAttendees_error_message").show();
+                $("#numOfParticipants").addClass("is-invalid");
+                error_attendees = true;
+            } 				
+			else {
+                $("#numOfAttendees_error_message").hide();
+                $("#numOfParticipants").removeClass("is-invalid");
+            }
+        }
+		
+
+        function valForm() {
+
+            error_fullname = false;
+            error_email = false;
+			error_date=false;
+            error_training= false;
+			error_attendees= false;
+
+			
+			check_fullname();
+            check_email();
+			check_date();
+			check_training();
+			check_numOfAttendees();
+			
+			if (error_fullname == false && error_email == false && error_date == false && error_training == false && error_attendees == false)
+			
+			{
+				
+                $.ajax({
+                    type: "POST",
+                    data: {'fname': $("#fname").val(), 'email': $("#email").val(), 'dateTraining': $("#dateTraining").val(), 'training-type': $("#training-type").val(), 'othTrainings': $("#othTrainings").val()  ,'numOfParticipants': $("#numOfParticipants").val() },
+                    url: "profile_edit_request.php",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.status == 'success') {
+                            $("#alert_sucess_message").show();
+                            $("#alert_error_message").hide();
+                            $('#training_request_form')[0].reset();
+                        } else if (data.status == 'error') {
+                           alert("Oops! Something went wrong.");
+                        }
+                    },
+                    error: function () {
+                        alert("Oops! Something went wrong!!!!.");
+                    }
+                });
+                return false;
+	        } 
+			
+			else {
+                $("#alert_sucess_message").hide();
+                $("#alert_error_message").show();
+                
+            }				
+			
+        }
+    });
+    
+</script>
 
 <script>
 

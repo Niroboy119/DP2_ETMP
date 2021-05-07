@@ -19,6 +19,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>EMTP - Expert Management Training Portal</title>
+    
+     <!-- Dropdown 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type ="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+    
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -31,6 +37,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
+    
 
   </head>
 
@@ -42,7 +49,7 @@
           <a class="navbar-brand" href="index.php">
             
            
-                  <a class="nav-link" href="admin/login.html"><span class="fas fa-user-shield"></span> Admin</a>
+                <!--  <a class="nav-link" href="admin/login.html"><span class="fas fa-user-shield"></span> Admin</a>-->
           
               
             <img src="images/logo-2.jpg" alt="50">
@@ -70,6 +77,10 @@
               <li class="nav-item">
                   <a class="nav-link" href="logout.php"><span class="fas fa-sign-out-alt"></span> Logout</a>
               </li>
+              <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-envelope" style="font-size:18px;"></span></a>
+       <ul class="dropdown-menu"></ul>
             </ul>
           </div>
         </div>

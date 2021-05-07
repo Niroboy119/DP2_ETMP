@@ -27,6 +27,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
 
+
   </head>
 
     <body class="bg-light">
@@ -36,8 +37,6 @@
         <div class="container">
           <a class="navbar-brand" href="index.php">
             
-           
-                  <a class="nav-link" href="admin/login.html"><span class="fas fa-user-shield"></span> Admin</a>
           
               
             <img src="images/logo-2.jpg" alt="50">
@@ -65,7 +64,7 @@
               <li class="nav-item">
                   <a class="nav-link" href="login.html"><span class="fas fa-sign-out-alt"></span> Login</a>
               </li>
-            </ul>
+              </ul>
           </div>
         </div>
       </nav>

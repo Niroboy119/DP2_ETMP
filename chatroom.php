@@ -11,25 +11,6 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
- <div class="container">
-   <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Webslesson Tutorial</a>
-     </div>
-     <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-envelope" style="font-size:18px;"></span></a>
-       <ul class="dropdown-menu"></ul>
-      </li>
-     </ul>
-    </div>
-   </nav>
-   <br />
-   <h2 align="center">Facebook Style Header Notification using PHP Ajax Bootstrap</h2>
-   <br />
-   <form method="post" id="comment_form">
-    <div class="form-group">
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="style_chat.css" />
@@ -99,3 +80,60 @@ session_start();
         </script>
     </body>
 </html>
+
+<script>
+$(document).ready(function(){
+ 
+ function load_unseen_notification(view = '')
+ {
+  $.ajax({
+   url:"notification_fetch.php",
+   method:"POST",
+   data:{view:view},
+   dataType:"json",
+   success:function(data)
+   {
+    $('.dropdown-menu').html(data.notification);
+    if(data.unseen_notification > 0)
+    {
+     $('.count').html(data.unseen_notification);
+    }
+   }
+  });
+ }
+ 
+ load_unseen_notification();
+ 
+ $('#comment_form').on('submit', function(event){
+  event.preventDefault();
+  if($('#subject').val() != '' && $('#comment').val() != '')
+  {
+   var form_data = $(this).serialize();
+   $.ajax({
+    url:"notification_insert.php",
+    method:"POST",
+    data:form_data,
+    success:function(data)
+    {
+     $('#comment_form')[0].reset();
+     load_unseen_notification();
+    }
+   });
+  }
+  else
+  {
+   alert("Both Fields are Required");
+  }
+ });
+ 
+ $(document).on('click', '.dropdown-toggle', function(){
+  $('.count').html('');
+  load_unseen_notification('yes');
+ });
+ 
+ setInterval(function(){ 
+  load_unseen_notification();; 
+ }, 5000);
+ 
+});
+</script>

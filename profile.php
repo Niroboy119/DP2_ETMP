@@ -1,5 +1,10 @@
 <?php include('include/header.php'); ?>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  
     <div class="container">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
@@ -7,7 +12,7 @@
                 <a class="nav-link active font-weight-bold" id="profile-tab" data-toggle="tab" name="profile" href="#profile" role="tab" aria-controls="home" aria-selected="true">Profile</a>
             </li>
              <li class="nav-item">
-                <a class="nav-link font-weight-bold" id="profile-tab" data-toggle="tab" name="profile" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Training Requests</a>
+                <a class="nav-link font-weight-bold" id="profile-tab" data-toggle="tab" name="profile" href="#vrequest" role="tab" aria-controls="profile" aria-selected="false">Training Requests</a>
             </li>
              <li class="nav-item">
                 <a class="nav-link font-weight-bold" id="profile-tab" data-toggle="tab" name="profile" href="#requests" role="tab" aria-controls="profile" aria-selected="false">Edit Requests</a>
@@ -59,44 +64,45 @@
                 </div>
             </div>
              <!--View training request-->
-                        <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="tab-pane" id="vrequest" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-2">
-                                <strong>Full Name: </strong>
-                            </div>
-                            <div class="col-md-10"> <?php echo $_SESSION['fullname']; ?>
-                            </div>
-                            <div class="col-md-2">
-                                <strong>Username: </strong>
-                            </div>
-                            <div class="col-md-10">
-                                <?php echo $_SESSION['username']; ?>
-                            </div>
-                            <div class="col-md-2">
-                                <strong>E-mail: </strong>
-                            </div>
-                            <div class="col-md-10">
-                                <?php echo $_SESSION['email']; ?>
-                            </div>
-                            <div class="col-md-2">
-                                <strong>Gender: </strong>
-                            </div>
-                            <div class="col-md-10">
-                                <?php echo $_SESSION['gender']; ?>
-                            </div>
-                            <div class="col-md-2">
-                                <strong>Created: </strong>
-                            </div>
-                            <div class="col-md-10">
-                                <?php echo $_SESSION['created_date']; ?>
-                            </div>
+                          
+                          	<table class="table table-bordered table-sm" >
+              
+    <thead>
+      <tr>
+     <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Training Date</th>
+                                <th>Training Type</th>
+                                <th>Attendees</th>
+                                <th>Payment</th>
+      </tr>
+    </thead>
+    <tbody id="table">
+      
+    </tbody>
+  </table>
+                          
                         </div>
                     </div>
                 </div>
             </div>
-            
+<script>
+            	$.ajax({
+		url: "View_ajax.php",
+		type: "POST",
+		cache: false,
+		success: function(data){
+		//	alert(data);
+			$('#table').html(data); 
+			
+		}
+	});
+        </script>
             <!--Edit training request-->
             <div class="tab-pane" id="requests" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="card mb-3" style="margin-top:30px">
@@ -106,7 +112,7 @@
                     </div>
                   </div>
                   <div class="card-body">
-                  <div class="show-request-data">
+                    <div class="show-request-data">
                         <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                             <thead>
                               <tr>
@@ -121,7 +127,7 @@
                             <tfoot>
                             </tfoot>
                         </table>
-                  </div>    
+                    </div>      
                     <div class="col-md-6">
                     <br>
                     <form id="training_request_form">
@@ -741,7 +747,8 @@
 <script>
 
   $(document).ready(function(){
-
+ 
+   
     getUser();
 
     $('#user_form').on('submit', function (event) {
@@ -1015,22 +1022,17 @@
                 $('#username').val(data.username);
                 $('#email').val(data.email);
                 $('#gender').val(data.gender);
+                
+               
             }
         });
-          function getUser() {
-        $.ajax({
-            url: "profile_action.php",
-            type: "POST",
-            data: { action: 'single_fetch' }, 
-            success: function (data) {
-                var data = JSON.parse(data);
-                $('#id').val(data['id']);
-                $('#fullname').val(data.fullname);
-                $('#username').val(data.username);
-                $('#email').val(data.email);
-                $('#gender').val(data.gender);
-            }
-        });
-    }
-  });
+       
+    
+  }
+        
+
+
+  
+  );
+  
 </script>

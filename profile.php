@@ -105,7 +105,23 @@
                       <div class="col-md-9 font-weight-bold"><i class="fas fa-users"></i> Edit Training Request</div>
                     </div>
                   </div>
-                  <div class="card-body">    
+                  <div class="card-body">
+                  <div class="show-request-data">
+                        <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
+                            <thead>
+                              <tr>
+                                <th>Request ID</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Date of Training</th>
+                                <th>Training Type</th>
+                                <th>Num of Attendees</th>
+                              </tr>
+                            </thead>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                  </div>    
                     <div class="col-md-6">
                     <br>
                     <form id="training_request_form">

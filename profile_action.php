@@ -95,10 +95,9 @@ if(isset($_POST["action"])){
 
   }
 
-  //insert update user request php code
 
-  // Single fetch
-  if($_POST["action"] == "single_fetch"){
+
+if($_POST["action"] == "single_fetch"){
 
     $id = $_SESSION['user_id'];
       
@@ -119,6 +118,12 @@ if(isset($_POST["action"])){
     echo json_encode($output);
 
   }
+
+
+
+
+
+
 
   // Single edit fetch
   if($_POST["action"] == "update_user"){
@@ -190,4 +195,3 @@ if(isset($_POST["action"])){
   }
 }
 
-?>

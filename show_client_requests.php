@@ -1,7 +1,7 @@
 <?php
-
+session_start();
 include "connection.php";
-$sql = "SELECT * FROM tbl_client_requests WHERE fullname = 'Saad' ";
+$sql = "SELECT * FROM tbl_client_requests WHERE fullname = '{$_SESSION['fullname']}' ";
 
 $result = $conn->query($sql);
 	if ($result->num_rows > 0) {

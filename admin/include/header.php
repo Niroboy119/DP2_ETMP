@@ -57,7 +57,7 @@
       border: 3px solid #00B4CC;
       border-right: none;
       padding: 5px;
-      height: 20px;
+      height: 36px;
       border-radius: 5px 0 0 5px;
       outline: none;
       color: #9DBFAF;
@@ -82,7 +82,7 @@
     .wrap{
       width: 30%;
       position: absolute;
-      top: 50%;
+      top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
@@ -142,6 +142,10 @@
               </li>
                <li class="nav-item">
                   <a class="nav-link" href="../chatroom_admin.php"><span class="fas fa-comments"></span> Chat With Users</a>
+              </li>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="adminmail.php"><span class="fas fa-comments"></span> Admin Inbox</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="training_search.php"><span class="fas fa-comments"></span> Search Training</a>

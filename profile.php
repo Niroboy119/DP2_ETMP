@@ -68,25 +68,22 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                          
                           	<table class="table table-bordered table-sm" >
-              
-    <thead>
-      <tr>
-     <th>ID</th>
+                            <thead>
+                            <tr>
+                            <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Email</th>
                                 <th>Training Date</th>
                                 <th>Training Type</th>
                                 <th>Attendees</th>
                                 <th>Payment</th>
-      </tr>
-    </thead>
-    <tbody id="table">
-      
-    </tbody>
-  </table>
-                          
+                            </tr>
+                            </thead>
+                            <tbody id="table">
+                            
+                            </tbody>
+                        </table>
                         </div>
                     </div>
                 </div>
@@ -122,10 +119,11 @@
                                 <th>Date of Training</th>
                                 <th>Training Type</th>
                                 <th>Num of Attendees</th>
+                                <th>Payment</th>
                               </tr>
                             </thead>
-                            <tfoot>
-                            </tfoot>
+                            <tbody id="rTable">
+                            </tbody>
                         </table>
                     </div>      
                     <div class="col-md-6">
@@ -216,6 +214,19 @@
                     
                 </div>
             </div>
+
+<script>
+    $.ajax({
+		url: "show_client_requests.php",
+		type: "POST",
+		cache: false,
+		success: function(data){
+		//	alert(data);
+			$('#rTable').html(data); 
+			
+		}
+	});
+</script>
                 
             <!-- Edit client password-->
             <div class="tab-pane" id="edit-profile" role="tabpanel" aria-labelledby="profile-tab">

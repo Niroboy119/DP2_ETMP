@@ -37,6 +37,7 @@ if (isset($_POST["submit"])) {
 	 <p>Type of Training: <?php echo $sth_assoc['Trainings']; ?></p>
 	 <p> Price: <?php echo $sth_assoc['Price']; ?></p>
     <?php } while($sth_assoc=mysqli_fetch_assoc($sth_query));
+    
     	?> 
 	</div>  
     <?php
@@ -45,11 +46,21 @@ if (isset($_POST["submit"])) {
 	   <?php 
 	}
 
+
 	
 }
+
+
+?>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<?php
 include('include/footer.php');
 
 
 ?>
+
+
+
+
 
 

@@ -128,7 +128,15 @@
                     </div>      
                     <div class="col-md-6">
                     <br>
-                    <form id="training_request_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                    <form method="post" id="training_request_form">
+                        <?php
+                            include "connection.php";
+                            $sql = "SELECT * FROM tbl_client_requests WHERE userId = '{$_SESSION['user_id']}' ";
+                            
+                            $result = $conn->query($sql);
+                            	if ($result->num_rows > 0) {
+                            		while($row = $result->fetch_assoc()) {
+                        ?>
     					<p class="lead">Edit the appropriate fields.</p>
         					<div id="alert_error_message" class="alert alert-danger collapse" role="alert">
                                 <i class="fa fa-exclamation-triangle"></i>
@@ -140,27 +148,28 @@
         					<div class="mb-3">
                                 <label for="fullname">Full Name *</label>
                                 <input type="text" class="form-control" id="fname" name="fname" maxlength="50"
-                                    placeholder="Enter full name" >
+                                    placeholder="Enter full name" value="<?=$row['fullname'];?>" >
                                 <div id="fullname_error_message" class="text-danger"></div>
         					 </div>
                             <div class="mb-3">
                                 <label for="email">Email *</label>
                                 <input type="email" class="form-control" id="email" name="email" maxlength="100"
-                                    placeholder="Enter email" >
+                                    placeholder="Enter email" value="<?=$row['email'];?>" >
                                 <div id="email_error_message" class="text-danger"></div>
                             </div>
                              <!-- include calendar for when the training/workshop should be held -->
                              <div class="mb-3">
                                 <label for="training-date">Date for training *</label>
                                 <input type="date" class="form-control" id="dateTraining" name="dateTraining"
-                                    placeholder="Pick a date" >
+                                    placeholder="Pick a date" value=<?=strftime('%Y-%m-%d',
+  strtotime($row['date_for_training']));?> >
                                 <div id="date_error_message" class="text-danger"></div>
                             </div>
                             <!-- Include a training type selection -->
                             <div class="mb-3">
                                 <label>Training type *</label>
-                                <select name="training-type" id="training-type" class="custom-select" onchange="change(this)" >
-                                    <option hidden>Select training type</option>
+                                <select name="training-type" id="training-type" class="custom-select" onchange="change(this)" value="none">
+                                    <option value="<?php echo $row['training_type']; ?>"><?php echo $row['training_type']; ?></option>
                                     <option>Leadership/Communication skills training</option>
                                     <option>Work productivity training</option>
                                     <option>Language Proficiency training</option>
@@ -179,14 +188,23 @@
                             </div>
                             <div class="mb-3">
                                 <label for="numOfParticipants">Number of Attendees *</label>
-                                <input type="number" class="form-control" id="numOfParticipants" name="numOfParticipants" min="1" max="50" >
+                                <input type="number" class="form-control" id="numOfParticipants" name="numOfParticipants" min="1" max="50" value="<?=$row['num_of_attendees'];?>">
                                 <div id="numOfAttendees_error_message" class="text-danger"></div>
                             </div>
                             <div>
                             <hr class="mb-4">    
+                            <input type="hidden" name="rid" id="rid" value="<?=$row['id'];?>">
                             <input type="hidden" name="action" id="update_request" value="register_trainingRequest">
-                            <button class="btn btn-primary btn-lg btn-block" id="update_request" type="submit">Update training request</button>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Update training request</button>
                             </div>
+                            <?php	
+                            	}
+                            	}
+                            	else {
+                            	//	echo "0 results";
+                            	}
+                            	mysqli_close($conn);
+                            ?>
                     </form>    
                     </div>
                     </div>

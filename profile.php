@@ -128,7 +128,7 @@
                     </div>      
                     <div class="col-md-6">
                     <br>
-                    <form id="training_request_form">
+                    <form id="training_request_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
     					<p class="lead">Edit the appropriate fields.</p>
         					<div id="alert_error_message" class="alert alert-danger collapse" role="alert">
                                 <i class="fa fa-exclamation-triangle"></i>

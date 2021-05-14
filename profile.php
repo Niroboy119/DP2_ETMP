@@ -120,6 +120,7 @@
                                 <th>Training Type</th>
                                 <th>Num of Attendees</th>
                                 <th>Payment</th>
+                                <th>Action</th>
                               </tr>
                             </thead>
                             <tbody id="rTable">
@@ -208,27 +209,6 @@
                     </form>    
                     </div>
                     </div>
-                  <!--<div class="card-body">-->
-                  <!--  <div class="table-responsive">-->
-                  <!--    <span id="sucess_message"></span>-->
-                      <!--<table class="table table-bordered" id="userTable" width="100%" cellspacing="0">-->
-                      <!--  <thead>-->
-                      <!--    <tr>-->
-                      <!--      <th>Request ID</th>-->
-                      <!--      <th>Full Name</th>-->
-                      <!--      <th>Email</th>-->
-                      <!--      <th>Date of Training</th>-->
-                      <!--      <th>Training Type</th>-->
-                      <!--      <th>Num of Attendees</th>-->
-                      <!--    </tr>-->
-                      <!--  </thead>-->
-                      <!--  <tfoot>-->
-                      <!--  </tfoot>-->
-                      <!--</table>-->
-                      
-                      <!-- Edit training request form -->
-            <!--<div class="tab-pane" id="edit-profile" role="tabpanel" aria-labelledby="profile-tab">-->
-            <!--    <div class="card">-->
                     
                 </div>
             </div>
@@ -496,7 +476,7 @@
 				
                 $.ajax({
                     type: "POST",
-                    data: {'fname': $("#fname").val(), 'email': $("#email").val(), 'dateTraining': $("#dateTraining").val(), 'training-type': $("#training-type").val(), 'othTrainings': $("#othTrainings").val()  ,'numOfParticipants': $("#numOfParticipants").val() },
+                    data: {'fname': $("#fname").val(), 'email': $("#email").val(), 'dateTraining': $("#dateTraining").val(), 'training-type': $("#training-type").val(), 'othTrainings': $("#othTrainings").val()  ,'numOfParticipants': $("#numOfParticipants").val(), 'rid': $("#rid").val() },
                     url: "profile_edit_request.php",
                     dataType: "json",
                     success: function (data) {

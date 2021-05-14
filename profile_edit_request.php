@@ -4,7 +4,7 @@ include "connection.php";
 
 $output='';
 
-    $id = $_SESSION['id'];  
+    //$id = $_SESSION['id'];  
       
     $fullname = $_POST['fname'];
     $email = $_POST['email'];
@@ -19,11 +19,11 @@ $output='';
     
     $sql = "UPDATE tbl_client_requests SET fullname = '$fullname',
                               email = '$email',
-                              dateTraining = '$tRequestDate',
-                              training-type = '$trainingType',
-                              othTrainings = '$oth_training_type',
-                              numOfParticipants = '$numOfAttendees'
-                              WHERE id = '$id' ";
+                              date_for_training = '$tRequestDate',
+                              training_type = '$trainingType',
+                              other_training_type = '$oth_training_type',
+                              num_of_attendees = '$numOfAttendees'
+                              WHERE fullname = '$fullname' ";
     
     if(mysqli_query($conn, $sql)){
 

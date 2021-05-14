@@ -5,7 +5,7 @@ include "connection.php";
 $output='';
 
     //$id = $_SESSION['id'];  
-      
+    $id = $_POST['rid'];  
     $fullname = $_POST['fname'];
     $email = $_POST['email'];
     $tRequestDate = $_POST['dateTraining'];
@@ -23,7 +23,7 @@ $output='';
                               training_type = '$trainingType',
                               other_training_type = '$oth_training_type',
                               num_of_attendees = '$numOfAttendees'
-                              WHERE fullname = '$fullname' ";
+                              WHERE id = '$id' ";
     
     if(mysqli_query($conn, $sql)){
 

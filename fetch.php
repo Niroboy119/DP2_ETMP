@@ -1,20 +1,20 @@
 <?php
 
-include('connect.php');
+include('connection.php');
 
 if(isset($_POST['view'])){
 
-// $con = mysqli_connect("localhost", "root", "", "notif");
+// $conn = mysqli_connect("localhost", "root", "", "notif");
 
 if($_POST["view"] != '')
 
 {
    $update_query = "UPDATE comments SET comment_status = 1 WHERE comment_status=0";
-   mysqli_query($con, $update_query);
+   mysqli_query($conn, $update_query);
 }
 
 $query = "SELECT * FROM comments ORDER BY comment_id DESC LIMIT 5";
-$result = mysqli_query($con, $query);
+$result = mysqli_query($conn, $query);
 $output = '';
 
 if(mysqli_num_rows($result) > 0)

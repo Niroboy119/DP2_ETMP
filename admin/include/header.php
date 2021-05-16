@@ -20,6 +20,10 @@
 
     <title>EMTP - Admin Panel</title>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type ="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 
@@ -111,6 +115,16 @@
     padding-right:240px;
     color:DarkTurquoise;
     }
+    
+    .bg-light {
+    font-size:16px;
+    }
+
+    .dropdown-toggle{
+    color:white;
+    position: relative;
+    top:6px
+    }
 
 
 	</style>
@@ -121,7 +135,7 @@
     <body class="bg-light">
       
       <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
+      <nav class="navbar navbar-expand-lg navbar-primary bg-dark static-top">
         <div class="container">
           <a class="navbar-brand" href="index.php">
             <img src="../images/logo-2.jpg" alt="50">
@@ -141,19 +155,63 @@
                   <a class="nav-link" href="profile.php"><span class="fas fa-user"></span> Profile</a>
               </li>
                <li class="nav-item">
-                  <a class="nav-link" href="../chatroom_admin.php"><span class="fas fa-comments"></span> Chat With Users</a>
+                  <a class="nav-link" href="chatroom_admin.php"><span class="fas fa-comments"></span> Chat With Users</a>
               </li>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="adminmail.php"><span class="fas fa-comments"></span> Admin Inbox</a>
+                  <a class="nav-link" href="adminmail.php"><span class="fas fa-envelope-open-text"></span> Admin Inbox</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="training_search.php"><span class="fas fa-comments"></span> Search Training</a>
+                  <a class="nav-link" href="training_search.php"><span class="fas fa-search"></span> Search Training</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="logout.php"><span class="fas fa-sign-out-alt"></span> Logout</a>
               </li>
+              <li>
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count" style="border-radius:10px;"></span> <span class="glyphicon glyphicon-envelope" style="font-size:18px;"></span></a>
+       <ul class="dropdown-menu"></ul>
+      </li>
             </ul>
           </div>
         </div>
       </nav>
+      
+        <script>
+$(document).ready(function(){
+ 
+ function load_unseen_notification(view = '')
+ {
+  $.ajax({
+   url:"../notification_fetch.php",
+   method:"POST",
+   data:{view:view},
+   dataType:"json",
+   success:function(data)
+   {
+    $('.dropdown-menu').html(data.notification);
+    if(data.unseen_notification > 0)
+    {
+     $('.count').html(data.unseen_notification);
+    }
+   }
+  });
+ }
+ 
+ load_unseen_notification();
+ 
+
+ 
+  $(document).on('click', '.dropdown-toggle', function(){
+  $('.count').html('');
+  load_unseen_notification('yes');
+ });
+ 
+ setInterval(function(){ 
+  load_unseen_notification();; 
+ }, 5000);
+ 
+});
+</script>
+
+      
+      

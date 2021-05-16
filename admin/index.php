@@ -50,12 +50,12 @@
     </div>
     <br>
     <!-- Area Charts -->
-    <!--  <div class="row" style="margin-bottom: 247px;">
+    <div class="row" style="margin-bottom: 247px;">
       <div class="col-lg-8">
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
-           Monthly Created Users</div>
+            Monthly Created Users</div>
           <div class="card-body">
             <canvas id="createdUsersChart" width="100%" height="50"></canvas>
           </div>
@@ -68,29 +68,20 @@
             Gender Distribution</div>
           <div class="card-body">
             <canvas id="genderDistribution" width="100%" height="100"></canvas>
-          </div>-->
+          </div>
         </div>
       </div>
     </div>
   </div>
-<br> 
-<br> 
-<br> <br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
-<br> 
+
   <?php include('include/footer.php'); ?>
 
   <script>
     $(document).ready(function(){
 
       addInformation();
-     // createdUsersChart();
-      //genderDistributionChart ();
+      createdUsersChart();
+      genderDistributionChart ();
 
       function addInformation(){
         $.ajax({
@@ -107,7 +98,7 @@
         });
       }
 
-     /* function createdUsersChart(){
+      function createdUsersChart(){
 
         $.ajax({
           url:"admin_action.php",
@@ -199,6 +190,6 @@
             });
           }
         });
-      }*/
+      }
     });
   </script>

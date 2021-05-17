@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-<div class="menu">
-
-</div>
-
-     <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <title>ETMP - Training Request Form</title>
-
-        <!-- Bootstrap v4.4.1 -->
-        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
-
-</head>
+<?php include('include/header.php'); ?>
 
 <body class="bg-light">
 

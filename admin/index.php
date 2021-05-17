@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card bg-success text-white o-hidden h-100">
+            <div class="card text-white bg-secondary mb-3">
               <div class="card-body">
                 <div class="card-body-icon">
                   <h2><i class="fas fa-user-plus"></i></h2>
@@ -42,6 +42,46 @@
                   <h2><i class="fas fa-fw fa-users-cog"></i></h2>
                 </div>
                 <h4><b id="total_admins"></b> Total Admin</h4>
+              </div>
+            </div>
+          </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-dark mb-3">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <h2><i class="fa fa-address-book"></i></h2>
+                </div>
+                <h4><b id="total_requests"></b> Requests Made</h4>
+              </div>
+            </div>
+          </div>
+           <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-warning mb-3">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <h2><i class="fa fa-spinner"></i></h2>
+                </div>
+                <h4><b id="requests_pending"></b> Requests Pending</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card bg-success text-white o-hidden">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <h2><i class="fa fa-check-circle"></i></h2>
+                </div>
+                <h4><b id="requests_accepted"></b> Requests Accepted</h4>
+              </div>
+            </div>
+          </div>
+           <div class="col-xl-3 col-sm-6 mb-3">
+            <div class="card text-white bg-dark mb-3">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <h2><i class="fa fa-usd"></i></h2>
+                </div>
+                <h4><b id="total_revenue"></b>Total Revenue</h4>
               </div>
             </div>
           </div>
@@ -94,6 +134,10 @@
             $('#total_inactive_users').text(data['total_inactive_users']);
             $('#total_active_users').text(data['total_active_users']);
             $('#total_admins').text(data['total_admins']);
+            $('#total_requests').text(data['total_requests']);
+            $('#requests_pending').text(data['requests_pending']);
+            $('#requests_accepted').text(data['requests_accepted']);
+            $('#total_revenue').text("$ "+ data['total_revenue']+" ");
           }
         });
       }

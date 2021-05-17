@@ -1,19 +1,34 @@
 <?php include('include/header.php'); ?>
 
 <div class="bar">
+    <div class="bg-light">
 <h1 class="center">Training Search Bar</h1>
 
 <form method="post">
 <div class="wrap">
 <div class="search">
-<input type="text" class="searchTerm" name="search" placeholder="What are you looking for?">
-<button type="submit" name="submit" class="searchButton">
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<input id="search" type="text" class="searchTerm" name="search" placeholder="What are you looking for?">
+<button id="btn" type="submit" name="submit" class="searchButton">
         <i class="fa fa-search"></i>
      </button>
 </div>
 </div>
 </form>
+<br>
 
+<br>
+<br>
+</div>
 </div>
 
 
@@ -29,20 +44,59 @@ if (isset($_POST["submit"])) {
 	if(mysqli_num_rows($sth_query)!=0 && $str!="") {
 	$sth_assoc=mysqli_fetch_assoc($sth_query);
 	?>
-	<h3 class="center2">Search Results</h3>
+	<br>
+	<br>
+	<h2 style="text-align:center">Search Results</h2>
 	<div class="details">
 	<?php
 	do { ?>
 	
-	 <p>Type of Training: <?php echo $sth_assoc['Trainings']; ?></p>
-	 <p> Price: <?php echo $sth_assoc['Price']; ?></p>
-    <?php } while($sth_assoc=mysqli_fetch_assoc($sth_query));
+	<table class="table table-bordered table-sm">
+  <tr>
+  <br>
+  <br>
+  <h2 style="text-align:justify"><?php echo $sth_assoc['Trainings']; ?></h2>
+  <br>
+    <th>Price:</th>
+    <td><?php echo $sth_assoc['Price']; ?></td>
+  </tr>
+  <tr>
+    <th>Program Instructor:</th>
+    <td><?php echo $sth_assoc['Program Instructor']; ?></td>
+  </tr>
+  <tr>
+    <th>Duration:</th>
+    <td><?php echo $sth_assoc['Duration']; ?></td>
+   </tr>
+  <tr>
+    <th>Availability (Day(s) of the week):</th>
+    <td><?php echo $sth_assoc['Availability']; ?></td>
+  </tr>
+  <tr>
+    <th>Target Audience:</th>
+    <td><?php echo $sth_assoc['Target Audience']; ?></td>
+  </tr>
+  <tr>
+    <th>Venue Availability:</th>
+    <td><?php echo $sth_assoc['Venues']; ?></td>
+  </tr>
+</table>
+	
+	
+	 
+	 <?php } while($sth_assoc=mysqli_fetch_assoc($sth_query));
     
     	?> 
 	</div>  
     <?php
 	} else {
-	   ?><p class="details">No results found!</p>
+	   ?> <script>
+	       var element= document.getElementById("search");
+	       var elm =  document.getElementById("btn");
+	       element.placeholder = "NO RESULTS WERE FOUND!";
+	       element.classList.add("invalid");
+	       elm.style.backgroundColor = "red";
+	   </script>
 	   <?php 
 	}
 
@@ -52,6 +106,7 @@ if (isset($_POST["submit"])) {
 
 
 ?>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 <?php
 include('include/footer.php');
 

@@ -1,5 +1,25 @@
 <?php include('include/header.php'); ?>
 
+<!--<!DOCTYPE html>-->
+
+<!--<html>-->
+
+<!--<head>-->
+
+<!--     <meta charset="utf-8">-->
+<!--        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+
+<!--        <title>ETMP - Training Request Form</title>-->
+
+        <!-- Bootstrap v4.4.1 -->
+<!--        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.min.css">-->
+<!--        <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+        <!-- favicon -->
+<!--        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">-->
+
+<!--</head>-->
+
 <body class="bg-light">
 
     <div class="container">
@@ -19,37 +39,37 @@
                         Please check in on some of the fields below.
                     </div>
                     <div id="alert_sucess_message" class="alert alert-success collapse" role="alert">
-                        Request created and successfully forwarded.
+                        Request has been created and your payment has been approved.
                     </div>
 					 <div class="mb-3">
-                            <label for="fullname">Full Name *</label>
+                            <label for="fullname">Full Name <a style="color: red;">*</a></label>
                             <input type="text" class="form-control" id="fname" name="fname" maxlength="50"
                                 placeholder="Enter full name" >
                             <div id="fullname_error_message" class="text-danger"></div>
 					  </div>
                         <div class="mb-3">
-                            <label for="email">Email *</label>
+                            <label for="email">Email <a style="color: red;">*</a></label>
                             <input type="email" class="form-control" id="email" name="email" maxlength="100"
                                 placeholder="Enter email" >
                             <div id="email_error_message" class="text-danger"></div>
                         </div>
                          <!-- include calendar for when the training/workshop should be held -->
                          <div class="mb-3">
-                            <label for="training-date">Date for training *</label>
+                            <label for="training-date">Date for training <a style="color: red;">*</a></label>
                             <input type="date" class="form-control" id="dateTraining" name="dateTraining"
                                 placeholder="Pick a date" >
                             <div id="date_error_message" class="text-danger"></div>
                         </div>
                         <!-- Include a training type selection -->
                         <div class="mb-3">
-                            <label>Training type *</label>
+                            <label>Training type <a style="color: red;">*</a></label>
                             <select name="training-type" id="training-type" class="custom-select" onchange="change(this)" >
                                 <option hidden>Select training type</option>
-                                <option>Leadership/Communication skills training</option>
-                                <option>Work productivity training</option>
-                                <option>Language Proficiency training</option>
-                                <option>Negotiation/Presentation skills training</option>
-                                <option>Personal Development training</option>
+                                <option>Leadership & Communication Skills</option>
+                                <option>Work Productivity</option>
+                                <option>Language Proficiency</option>
+                                <option>Negotiation & Presentation Skills</option>
+                                <option>Personal Development</option>
                                 <option>Others...</option>
                             </select>
                             <div id="trainingType_error_message" class="text-danger"></div>
@@ -62,7 +82,7 @@
                             <div id="otherTraining_error_message" class="text-danger"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="numOfParticipants">Number of Attendees *</label>
+                            <label for="numOfParticipants">Number of Attendees <a style="color: red;">*</a></label>
                             <input type="number" class="form-control" id="numOfParticipants" name="numOfParticipants" min="1" max="50" >
                             <div id="numOfAttendees_error_message" class="text-danger"></div>
                         </div>
@@ -80,7 +100,7 @@
 </script>
 
   <div class="form-group">
-    <label class="control-label">Payment Type</label>
+    <label class="control-label">Payment Type <a style="color: red;">*</a></label>
     <select onchange='checkIfYes()' class="select form-control" id="defect" name="defect">
       <option id="No" value="No">Cash</option>
       <option id="Yes" value="Yes">Online Payment</option>
@@ -99,30 +119,30 @@
           <div>
             <h3>Billing Address</h3>
             <label for="name"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="John M. Doe">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter full name">
 			<div id="name_error_message" class="text-danger"></div>
 
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email1" class="form-control" name="email" placeholder="john@example.com">
+            <input type="text" id="email1" class="form-control" name="email" placeholder="Enter email">
 			<div id="email1_error_message" class="text-danger"></div>
 
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" class="form-control" name="address" placeholder="Jalan Simpang Tiga">
+            <input type="text" id="adr" class="form-control" name="address" placeholder="Enter address">
 			<div id="address_error_message" class="text-danger"></div>
 			
             <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" class="form-control" name="city" placeholder="Kuching">
+            <input type="text" id="city" class="form-control" name="city" placeholder="Enter name of city">
 			<div id="city_error_message" class="text-danger"></div>
 
             <div class="row">
               <div class="col">
                 <label for="state">State</label>
-                <input type="text" id="state"  maxlength="2" class="form-control" name="state" placeholder="Sarawak">
+                <input type="text" id="state"  maxlength="2" class="form-control" name="state" placeholder="Enter state">
 				<div id="state_error_message"  class="text-danger"></div>
               </div>
               <div class="col">
                 <label for="zip">Zip</label>
-                <input type="text" id="zip"  maxlength="5" class="form-control" name="zip" placeholder="93350">
+                <input type="text" id="zip"  maxlength="5" class="form-control" name="zip" placeholder="Enter zipcode">
 				<div id="zip_error_message" class="text-danger"></div>
               </div>
             </div>
@@ -130,31 +150,24 @@
 
           <div class="col-50">
             <h3>Payment</h3>
-            <label for="fname">Accepted Cards</label>
-            <div class="icon-container">
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
-            </div>
             <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" class="form-control" placeholder="John More Doe">
+            <input type="text" id="cname" name="cardname" class="form-control" placeholder="Enter name on card">
 			<div id="cardName_error_message" class="text-danger"></div>
             <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum"  maxlength="16" class="form-control" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <input type="text" id="ccnum"  maxlength="16" class="form-control" name="cardnumber" placeholder="Enter credit card number">
 			<div id="cardNum_error_message"  class="text-danger"></div>
             <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" class="form-control" name="expmonth" placeholder="September">
+            <input type="text" id="expmonth" class="form-control" name="expmonth" placeholder="Enter month of expiry">
 			<div id="expM_error_message" class="text-danger"></div>
             <div class="row">
               <div class="col">
                 <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear"  maxlength="4" class="form-control" name="expyear" placeholder="2018">
+                <input type="text" id="expyear"  maxlength="4" class="form-control" name="expyear" placeholder="Enter year of expiry">
 				<div id="expY_error_message" class="text-danger"></div>
               </div>
               <div class="col">
                 <label for="cvv">CVV</label>
-                <input type="text" id="cvv"  maxlength="3" name="cvv" class="form-control" placeholder="352">
+                <input type="text" id="cvv"  maxlength="3" name="cvv" class="form-control" placeholder="Enter cvv">
 				<div id="cvv_error_message" class="text-danger"></div>
               </div>
             </div>
@@ -214,12 +227,16 @@
                 if (e.which == 13) {
                     event.preventDefault();
                     valForm();
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
                 }
             });
 
             $('#training_request_form').on('submit', function (event) {
                 event.preventDefault();
                 valForm();
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
             });
 
 			var error_fullname = false;
@@ -573,7 +590,7 @@
 					
                     $.ajax({
                         type: "POST",
-                        data: { 'fname': $("#fname").val(), 'email': $("#email").val(), 'dateTraining': $("#dateTraining").val(), 'training-type': $("#training-type").val(), 'othTrainings': $("#othTrainings").val()  ,'numOfParticipants': $("#numOfParticipants").val() },
+                        data: {'fname': $("#fname").val(), 'email': $("#email").val(), 'dateTraining': $("#dateTraining").val(), 'training-type': $("#training-type").val(), 'othTrainings': $("#othTrainings").val()  ,'numOfParticipants': $("#numOfParticipants").val() },
                         url: "tRequest_action.php",
                         dataType: "json",
                         success: function (data) {
@@ -609,7 +626,7 @@
 				if(error_cvv==false && error_expY==false && error_expM==false && error_cardName==false && error_cardNum==false && error_zip==false && error_state==false && error_city==false && error_address==false && error_name == false && error_email1 == false) {
                    $.ajax({
                         type: "POST",
-                         data: { 'fname': $("#fname").val(), 'email': $("#email").val(), 'dateTraining': $("#dateTraining").val(), 'training-type': $("#training-type").val(), 'othTrainings': $("#othTrainings").val()  ,'numOfParticipants': $("#numOfParticipants").val(), 'bName': $("#name").val(), 'bEmail': $("#email1").val(), 'address': $("#adr").val(), 'city': $("#city").val(), 'state': $("#state").val(), 'zip': $("#zip").val(), 'cardName': $("#cname").val(), 'cardNum': $("#ccnum").val(), 'expMonth': $("#expmonth").val(), 'expYear': $("#expyear").val(), 'cvv': $("#cvv").val() },
+                         data: {'fname': $("#fname").val(), 'email': $("#email").val(), 'dateTraining': $("#dateTraining").val(), 'training-type': $("#training-type").val(), 'othTrainings': $("#othTrainings").val()  ,'numOfParticipants': $("#numOfParticipants").val(), 'bName': $("#name").val(), 'bEmail': $("#email1").val(), 'address': $("#adr").val(), 'city': $("#city").val(), 'state': $("#state").val(), 'zip': $("#zip").val(), 'cardName': $("#cname").val(), 'cardNum': $("#ccnum").val(), 'expMonth': $("#expmonth").val(), 'expYear': $("#expyear").val(), 'cvv': $("#cvv").val() },
                         url: "tRequest_action1.php",
                         dataType: "json",
                         success: function (data) {
@@ -618,11 +635,11 @@
                                 $("#alert_error_message").hide();
                                 $('#training_request_form')[0].reset();
                             } else if (data.status == 'error') {
-                              alert("Oops! Something went wrong.");  
+                              alert("Oops! Something went wrong.!");  
                             }
                         },
                         error: function () {
-                            alert("Oops! Something went wrong.");
+                            alert("Oops! Something went wrong!.");
                         }
                     });
                     return false;

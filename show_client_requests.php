@@ -15,7 +15,7 @@ $result = $conn->query($sql);
 			<td><?=$row['training_type'];?></td>
 			<td><?=$row['num_of_attendees'];?></td>
 			<td><?=$row['paymentType'];?></td>
-			<td><button class="btn btn-primary btn-lg btn-block" id="<?=$row['id'];?>">Select</button></td>
+			<td><?php echo '<a href="edit_request.php?id='. $row['id'] .'" class="btn btn-primary" title="Update Record">Edit</a>'; ?></td>
 		</tr>
 <?php	
 	}

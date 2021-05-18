@@ -184,9 +184,9 @@ exit();
 					$date = $row['created_date'];
 					
 					if($row['open'] == '1'){
-						$open = '<img src="images/open.png" alt="Opened" title="Opened" />';
+						$open = '<img src="images/open.png" alt="Read" title="Read" />';
 					}else {
-						$open = '<img src="images/not_open.png" alt="Opened" title="Opened" />';
+						$open = '<img src="images/not_open.png" alt="Unread" title="Unread" />';
 					}
 
 					echo '<tr class="border_bottom">';

@@ -66,24 +66,30 @@
              <!--View training request-->
             <div class="tab-pane" id="vrequest" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="card">
+                    <div class="card-header">
+                    <div class="row">
+                      <div class="col-md-9 font-weight-bold"><i class="fas fa-users"></i> View Training Requests</div>
+                    </div>
+                  </div>
                     <div class="card-body">
                         <div class="row">
-                          	<table class="table table-bordered table-sm" >
+                          	<table class="table table-bordered table-sm" width="100%" cellspacing="0">
                             <thead>
-                            <tr>
-                            <th>ID</th>
+                              <tr>
+                             <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Email</th>
                                 <th>Training Date</th>
                                 <th>Training Type</th>
                                 <th>Attendees</th>
                                 <th>Payment</th>
-                            </tr>
+                                <th>Status</th>
+                              </tr>
                             </thead>
                             <tbody id="table">
-                            
+                              
                             </tbody>
-                        </table>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -100,6 +106,23 @@
 		}
 	});
         </script>
+        
+<script>
+    function change(obj) {
+
+    var selectBox = obj;
+    var selected = selectBox.value;
+    var othTrainingsDiv = document.getElementById("othT-mb3"); 
+
+    if(selected == 'Others...'){
+        othTrainingsDiv.style.display = "";
+    }
+    else{
+        othTrainingsDiv.style.display = "none";
+    }
+    }
+</script>
+        
             <!--Edit training request-->
             <div class="tab-pane" id="requests" role="tabpanel" aria-labelledby="profile-tab">
                 <div class="card mb-3" style="margin-top:30px">
@@ -123,15 +146,15 @@
                                 <th>Action</th>
                               </tr>
                             </thead>
-                            <tbody id="rTable">
-                            </tbody>
+                            <tbody id="rTable" >
+                            </body>
                         </table>
                     </div>      
                     </div>
                     
                 </div>
             </div>
-
+            
 <script>
     $.ajax({
 		url: "show_client_requests.php",
@@ -236,21 +259,7 @@
     <br><br><br><br><br>
 <?php include('include/footer.php'); ?>
 
-    <script>
-        function change(obj) {
-
-        var selectBox = obj;
-        var selected = selectBox.value;
-        var othTrainingsDiv = document.getElementById("othT-mb3"); 
-
-        if(selected === 'Others...'){
-            othTrainingsDiv.style.display = "";
-        }
-        else{
-            othTrainingsDiv.style.display = "none";
-        }
-        }
-    </script>
+    
 
 <!-- script for -->
 
@@ -404,13 +413,15 @@
                             $("#alert_error_message").hide();
                             $('#training_request_form')[0].reset();
                         } else if (data.status == 'error') {
-                           alert("Oops! Something went wrong.");
+                          alert("Oops! Something went wrong!.");
                         }
                     },
                     error: function () {
                         alert("Oops! Something went wrong!!!!.");
                     }
                 });
+                
+               
                 return false;
 	        } 
 			

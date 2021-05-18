@@ -1,4 +1,4 @@
-<?php
+<?php include('include/header.php'); 
 
 // Ignore Warnings
 error_reporting(E_ALL ^ E_NOTICE);
@@ -11,22 +11,34 @@ require_once "time.php";
 
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>EMTP - Inbox</title>
+<!DOCTYPE html>
+<html>
+   <head>
+      <div class="menu">
+      </div>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>EMTP - Admin Inbox</title>
+      <!-- Bootstrap v4.4.1 -->
+      <link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.min.css">
+      <!-- favicon -->
+   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
+ <link rel="stylesheet" type="text/css" href="../css/style2.css">
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 
-    <!-- Bootstrap v4.4.1 
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/bootstrap.min.css">
-
-    <!-- favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg">
-<link rel="stylesheet" type="text/css" href="css/style2.css">
-<script type="text/javascript" src="js/jquery.js"></script>
 </head>
+   <body class="bg-light">
+      <div class="container">
+      
+       <!-- <div class="col-md-4 offset-md-4">-->
+     <div class="text-center mt-5"> 
+        
+      </div>
+      <h1 class="text-center">Admin Inbox</h1>
 
-<body>
+   <div class="mb-3">
+
 
 <script type="text/javascript">
 
@@ -43,26 +55,42 @@ $(window).load(function(){
 	if(isset($_GET['msg'])){
 
 		$id = $_GET['msg'];
-		mysqli_query($conn, "UPDATE messages SET open = '1' WHERE id = '$id'");
-		$msg = mysqli_query($conn, "SELECT * FROM messages WHERE id = '$id'");
+		mysqli_query($conn, "UPDATE contactus SET open = '1' WHERE id = '$id'");
+		$msg = mysqli_query($conn, "SELECT * FROM contactus WHERE id = '$id'");
 		$row = mysqli_fetch_assoc($msg);
-			$from = $row['from'];
+			$from = $row['name'];
 			$email = $row['email'];
-			$date = $row['date'];
-			$time = time_passed($row['time']);
-			$message = $row['message'];
+			$phone = $row['phone'];
+			$message = $row['comments'];
+			$phonecall = $row['phonecall'];
+			$website = $row['website'];
+			$priority = $row['priority'];
+			$type = $row['type'];
+			$date = $row['created_date'];
+		
 ?>
 
 <div id="msg">
 
-<a href="./">← Back to Inbox</a>
+
+
+
+
+
+
+
+<a href="adminmail.php">← Back to Inbox</a>
 
 <table>
 	<tr>
-		<td>From : <strong><?php echo $from; ?></strong></td>
-		<td>Email : <strong><?php echo $email; ?></strong></td>
-		<td>Date : <strong><?php echo $date; ?></strong></td>
-		<td>Time : <strong><?php echo $time; ?></strong></td>
+		<td>From: <strong><?php echo $from; ?></strong></td>
+		<td>Email: <strong><?php echo $email; ?></strong></td>
+		<td>Date: <strong><?php echo $date; ?></strong></td>
+		<td>Phone: <strong><?php echo $phone; ?></strong></td>
+		<td>Callback: <strong><?php echo $phonecall; ?></strong></td>
+		<td>Website: <strong><?php echo $website; ?></strong></td>
+		<td>Priority: <strong><?php echo $priority; ?></strong></td>
+		<td>Type: <strong><?php echo $type; ?></strong></td>
 	</tr>
 </table>
 
@@ -92,9 +120,9 @@ exit();
 } else if(isset($_GET['remove'])){
 
 	$id = $_GET['remove'];
-	$remove = mysqli_query($conn, "DELETE FROM messages WHERE id = '$id'");
+	$remove = mysqli_query($conn, "DELETE FROM contactus WHERE id = '$id'");
 	if($remove){
-		echo '<script>window.location = "./"</script>';
+		echo '<script>window.location = "adminmail.php"</script>';
 	}else {
 		die("Please Refresh the page.");
 	}
@@ -107,7 +135,7 @@ exit();
 
 <div id="inbox">
 
-	<table>
+<table class="sortable">
 
 		<tr>
 
@@ -125,7 +153,7 @@ exit();
 				$limit = 5;
 				$p = $_GET['p'];
 
-				$get_total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM messages"));
+				$get_total = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM contactus"));
 				$total = ceil($get_total/$limit);
 
 				if(!isset($p)){
@@ -134,39 +162,39 @@ exit();
 					$offset = 0;
 				}else if($p <= '0'){
 					$offset = 0;
-					echo '<script>window.location = "./";</script>';
+					echo '<script>window.location = "adminmail.php";</script>';
 				}else {
 					$offset = ($p - 1) * $limit;
 				}
 
-				$inbox = mysqli_query($conn, "SELECT * FROM messages LIMIT $offset,$limit");
+				$inbox = mysqli_query($conn, "SELECT * FROM contactus LIMIT $offset,$limit");
 				$rows = mysqli_num_rows($inbox);
 				while($row = mysqli_fetch_assoc($inbox)){
 					$id = $row['id'];
-					$from = $row['from'];
+					$from = $row['name'];
 					$email = $row['email'];
 
-					if(strlen($row['subject']) >= 50){
-						$subject = substr($row['subject'],0,50)."..";
+					if(strlen($row['type']) >= 50){
+						$type = substr($row['type'],0,50)."..";
 					}else {
-						$subject = $row['subject'];
+						$type = $row['type'];
 					}
 
-					$message = $row['message'];
-					$date = $row['date'];
-					$time = time_passed($row['time']);
+					$message = $row['comments'];
+					$date = $row['created_date'];
+					
 					if($row['open'] == '1'){
-						$open = '<img src="images/open.png" alt="Opened" title="Opened" />';
+						$open = '<img src="images/open.png" alt="Read" title="Read" />';
 					}else {
-						$open = '<img src="images/not_open.png" alt="Opened" title="Opened" />';
+						$open = '<img src="images/not_open.png" alt="Unread" title="Unread" />';
 					}
 
 					echo '<tr class="border_bottom">';
 						echo '<td><a href="?msg='.$id.'">'.$id.'</a></td>';
 						echo '<td><a href="?msg='.$id.'">'.$from.'</a></td>';
 						echo '<td><a href="?msg='.$id.'">'.$email.'</a></td>';
-						echo '<td><a href="?msg='.$id.'">'.$subject.'</a></td>';
-						echo '<td><a href="?msg='.$id.'">'.$date.' - '.$time.'</a></td>';
+						echo '<td><a href="?msg='.$id.'">'.$type.'</a></td>';
+						echo '<td><a href="?msg='.$id.'">'.$date.'</a></td>';
 						echo '<td><a href="?msg='.$id.'">'.$open.'</a></td>';
 					echo '</tr>';
 
@@ -200,3 +228,15 @@ exit();
 
 </body>
 </html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+  <?php include('include/footer.php'); ?>
